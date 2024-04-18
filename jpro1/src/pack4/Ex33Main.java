@@ -36,25 +36,17 @@ public class Ex33Main {
 			int year = today.get(Calendar.YEAR) - Integer.parseInt(hd.getIbsa());
 			
 			// 근속수당
-			if(year >= 0 && year <= 3) {
-				sudang = 150000;
-			} else if(year >= 4 && year <= 8) {
-				sudang = 450000;
-			} else {
-				sudang = 1000000;
-			}
+			if(year >= 0 && year <= 3) sudang = 150000;
+			else if(year >= 4 && year <= 8) sudang = 450000; 
+			else sudang = 1000000;
 			
 			// 급여액
 			salary = hd.getGibon() + sudang;
 			
 			// 공제액
-			if(salary >= 3000000) {
-				gongje = salary * 0.5;
-			} else if(salary >= 2000000) {
-				gongje = salary * 0.3;
-			} else {
-				gongje = salary * 0.15;
-			}
+			if(salary >= 3000000) gongje = salary * 0.5;
+			else if(salary >= 2000000) gongje = salary * 0.3;
+			else gongje = salary * 0.15;
 			
 			// 수령액
 			suryoung = salary - (int)gongje;
@@ -62,16 +54,17 @@ public class Ex33Main {
 			System.out.println(hd.getSabun() + "\t" + hd.getIrum() + "\t" + hd.getGibon() +
 					"\t" + year + "\t" + sudang + "\t" + (int)gongje + "\t" + suryoung);
 		}
-		System.out.println("\n처리 건수 : " + list.size());
+		System.out.println("\n처리 건수 : " + list.size() + " 건");
 	}
 	
 	public static void main(String[] args) {
 		String[] datas = new String[3];
-		datas[0] = "1,강나루,1500000,2015";   // 데이터를 콤마로 구분
-		datas[1] = "2,나,2500000,2020";
-		datas[2] = "3,다,3500000,2021";
-		
 		Ex33Main test2 = new Ex33Main();
+		
+		datas[0] = "1,신선해,1500000,2020";   // 데이터를 콤마로 구분
+		datas[1] = "2,신기해,1800000,2022";
+		datas[2] = "3,신기루,2500000,2015";
+		
 		test2.inputData(datas);
 		test2.displayData();
 	}
