@@ -56,8 +56,8 @@ public class Ex34IoTest {
 		fr.close();
 		
 		System.out.println("전국 도서관 정보 파일 일부 읽기 --------");
-		File file = new File("C:/work/전국도서관표준데이터.csv");
-		FileReader fr2 = new FileReader(file);
+		File file = new File("C:/work/전국도서관표준데이터.csv");  // 해당 경로 파일의 객체를 생성
+		FileReader fr2 = new FileReader(file);  // 
 		BufferedReader br2 = new BufferedReader(fr2);  // 입출력 장치 속도가 달라 사용.
 		
 		int count = 0;

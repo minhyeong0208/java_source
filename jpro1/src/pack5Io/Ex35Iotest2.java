@@ -1,6 +1,7 @@
 package pack5Io;
 
 import java.io.BufferedReader;
+import java.io.Writer;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,15 +14,18 @@ public class Ex35Iotest2 {
 	// 1byte 단위로 데이터 입출력 : 문자, 그림, 소리 파일 등 다양한 데이터 처리 가능
 	public void write_file(File file, ArrayList<String> strdatas) {
 		try {
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "utf-8"));
+			//BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "utf-8"));
+			FileOutputStream fos = new FileOutputStream(file);
+			Writer os = new OutputStreamWriter(fos);
+			BufferedWriter writer = new BufferedWriter(os); // BufferedWriter 생성자 확인 결과,인수로 들어가는 값은 Writer 타입이어야 한다.  fos는 FileOutputStream 타입이므로 불가
 			
 			for(String munja : strdatas) {
-				writer.write(munja, 0, munja.length());  // 한 행 작성
+				writer.write(munja, 0, munja.length());  // 한 행 작성  , fos가 안되는 이유는 fos의 write메소드의 첫번째 매개변수 타입이 byte 타입이므로 String 타입인 munja가 들어갈 수 없다. 그러므로 19,20행 클래스를 사용하여 타입응 변환하여야 한다.
 				writer.newLine();  // line skip
 			}
 			
 			if(writer != null) writer.close();  // null 아닐때 close -> 저장이 완료
-		} catch (Exception e) {
+		} catch (Exception  e) {
 			System.out.println("write_file err : "+ e);
 		} 
 	}
