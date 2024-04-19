@@ -19,7 +19,7 @@ public class Ex39ThreadClock extends Frame implements ActionListener, Runnable {
 	Thread thread;
 
 	public Ex39ThreadClock() {
-		lblMessage = new Label("show time"); // 좌우 기준 좌측에 출력
+		lblMessage = new Label("show time", Label.CENTER); // 좌우 기준 좌측에 출력
 		super.add("Center", lblMessage); // Frame 클래스에 add 한 것 , 프레임의 위아래 기준 가운데가 되도록 함.
 
 		Button btnClick = new Button("click");
