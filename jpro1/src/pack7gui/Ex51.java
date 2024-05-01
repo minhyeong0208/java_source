@@ -34,7 +34,6 @@ public class Ex51 extends JFrame implements ActionListener {
 		super("성적 출력");
 
 		gradeLayout();
-		//addLayout();
 
 		setBounds(800, 200, 400, 300);
 		setVisible(true);
@@ -43,7 +42,7 @@ public class Ex51 extends JFrame implements ActionListener {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				int result = JOptionPane.showConfirmDialog(Ex51.this, 
-						"정말 종료할거야?", "종료 확인", JOptionPane.YES_NO_OPTION);
+						"종료하시겠습니까?", "종료 확인", JOptionPane.YES_NO_OPTION);
 				if(result == JOptionPane.YES_OPTION) 
 					setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				else
@@ -54,24 +53,7 @@ public class Ex51 extends JFrame implements ActionListener {
 		x = super.getWidth() / 2; // frame 너비의 반   
 		y = super.getHeight() / 2;  // frame 높이의 반 
 	}
-	
-	private void addLayout() {
-		btn1 = new JButton("확인");
-		btn2 = new JButton("초기화");
-		btn1.addActionListener(this);
-		btn2.addActionListener(this);
 
-		JPanel panel = new JPanel();
-		panel.add(btn1);
-		panel.add(btn2);
-
-		
-		add("South", panel); // Frame은 BorderLayout이므로
-		
-	}
-	
-	
-	
 	private void gradeLayout() {
 		setLayout(new GridLayout(5, 1));
 
@@ -127,7 +109,7 @@ public class Ex51 extends JFrame implements ActionListener {
 
 	@Override
 	public void paint(Graphics g) {
-		super.paint(g);
+		super.paint(g);  // https://knight76.tistory.com/entry/30000221611  // 실제 add된 컴포넌트가 paint 되는 부분
 		switch (selImage) {
 		case 1:
 		case 2:
@@ -139,8 +121,9 @@ public class Ex51 extends JFrame implements ActionListener {
 			image = Toolkit.getDefaultToolkit().getImage("C:\\work\\jsou\\jpro1\\src\\pack7gui\\pack8.jpg"); 
 			break;
 		}
-		//g.clearRect(0, 300, 400, 300);
-		g.drawImage(image, x - image.getWidth(this) / 2, 240, this);
+
+		if(image != null)  // image가 null이 아닌 경우, drawImage  실행(초기값 null)
+			g.drawImage(image, x - image.getWidth(this) / 2, 240, this);
 	}
 	
 	@Override
@@ -171,7 +154,7 @@ public class Ex51 extends JFrame implements ActionListener {
 			}
 			
 		} else if (e.getSource() == btn1 && txtMat.getText().equals("") == false) {
-			int kor = -1, eng = -1, mat = -1;
+			int kor = 0, eng = 0, mat = 0;
 			try {
 				kor = Integer.parseInt(txtKor.getText());
 			} catch (Exception e2) {
@@ -233,6 +216,7 @@ public class Ex51 extends JFrame implements ActionListener {
 			if (!txtMat.getText().equals("")) {
 				txtMat.setText("");
 			}
+			
 		}
 		
 	}
