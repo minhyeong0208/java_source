@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class Ex48Calculator2 extends JFrame implements ActionListener {
+public class Ex48Calculator extends JFrame implements ActionListener {
 	private JTextField txt1, txt2;
 	int num1, num2;
 	private ButtonGroup rbGroup = new ButtonGroup();
@@ -23,7 +23,7 @@ public class Ex48Calculator2 extends JFrame implements ActionListener {
 	private JLabel lblResult;
 	private JButton btnCalc, btnReset, btnFin;
 	
-	public Ex48Calculator2() {
+	public Ex48Calculator() {
 		super("미니 계산기");
 		
 		calcLayout();
@@ -35,7 +35,7 @@ public class Ex48Calculator2 extends JFrame implements ActionListener {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				int result = JOptionPane.showConfirmDialog(Ex48Calculator2.this, 
+				int result = JOptionPane.showConfirmDialog(Ex48Calculator.this, 
 						"정말 종료할거야?", "종료 확인", JOptionPane.YES_NO_OPTION);
 				if(result == JOptionPane.YES_OPTION) 
 					setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -174,4 +174,5 @@ public class Ex48Calculator2 extends JFrame implements ActionListener {
 		new Ex48Calculator();
 	}
 }
+
 

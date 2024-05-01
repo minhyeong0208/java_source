@@ -3,6 +3,8 @@ package pack7gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -13,14 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class Ex48Calculator extends JFrame implements ActionListener {
+public class Ex48Calc extends JFrame implements ActionListener {
 	JTextField txtNum1, txtNum2;
 	ButtonGroup buttonGroup = new ButtonGroup(); // 라디오 버튼 그룹화를 위해 사용
 	JRadioButton plus, minus, cross, division;
 	JLabel lblResult;
 	JButton btn1,btn2,btn3;
 
-	public Ex48Calculator() {
+	public Ex48Calc() {
 		super("미니 계산기");
 
 		comp();
@@ -28,7 +30,17 @@ public class Ex48Calculator extends JFrame implements ActionListener {
 		setBounds(800, 200, 400, 300);
 		setVisible(true);
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 윈도우 종료
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				int result = JOptionPane.showConfirmDialog(Ex48Calc.this, 
+						"종료?", "종료 확인", JOptionPane.YES_NO_OPTION);
+				if(result == JOptionPane.YES_OPTION) 
+					setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				else
+					setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+			}
+		});
 	}
 
 	private void addLayout() {
@@ -125,8 +137,7 @@ public class Ex48Calculator extends JFrame implements ActionListener {
 			
 			int result = 0;
 			if(plus.isSelected()) {
-				result = num1 + num2;
-				System.out.println(result);
+				lblResult.setText("결과 : " + (num1 + num2));
 			} else if(minus.isSelected()) {
 				result = num1 - num2;
 				System.out.println(result);
@@ -135,15 +146,12 @@ public class Ex48Calculator extends JFrame implements ActionListener {
 				System.out.println(result);
 			} else {
 				if(num2 != 0) {
-					result = num1 / num2;
+					lblResult.setText("결과 : " + num1 / (double)num2);
 				} else {
 					JOptionPane.showMessageDialog(this, "0으로 나누기 X", "알림", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			
-			String message = "결과 : " + result;
-			
-			lblResult.setText(message);
 		} else if(e.getSource() == btn2) {
 			if(!txtNum1.getText().equals("")) {
 				txtNum1.setText("");
@@ -169,7 +177,7 @@ public class Ex48Calculator extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		new Ex48Calculator();
+		new Ex48Calc();
 
 	}
 
