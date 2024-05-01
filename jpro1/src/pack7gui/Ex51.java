@@ -121,9 +121,11 @@ public class Ex51 extends JFrame implements ActionListener {
 			image = Toolkit.getDefaultToolkit().getImage("C:\\work\\jsou\\jpro1\\src\\pack7gui\\pack8.jpg"); 
 			break;
 		}
-
+		//g.clearRect(0, 300, 400, 300);
+		
 		if(image != null)  // image가 null이 아닌 경우, drawImage  실행(초기값 null)
 			g.drawImage(image, x - image.getWidth(this) / 2, 240, this);
+		
 	}
 	
 	@Override
@@ -157,28 +159,40 @@ public class Ex51 extends JFrame implements ActionListener {
 			int kor = 0, eng = 0, mat = 0;
 			try {
 				kor = Integer.parseInt(txtKor.getText());
+				if(kor > 100 || kor < 0) {
+					JOptionPane.showMessageDialog(this, "0 ~ 100 사이 값을 입력하시오", "입력값 오류", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
 			} catch (Exception e2) {
-				JOptionPane.showMessageDialog(this, "정수로 입력하시오.", "메시지", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "정수로 입력하시오.", "타입 오류", JOptionPane.INFORMATION_MESSAGE);
 				txtKor.requestFocus();
 				return;
 			}
 			try {
 				eng = Integer.parseInt(txtEng.getText());
+				if(eng > 100 || eng < 0) {
+					JOptionPane.showMessageDialog(this, "0 ~ 100 사이 값을 입력하시오", "입력값 오류", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
 			} catch (Exception e2) {
-				JOptionPane.showMessageDialog(this, "정수로 입력하시오.", "메시지", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "정수로 입력하시오.", "타입 오류", JOptionPane.INFORMATION_MESSAGE);
 				txtEng.requestFocus();
 				return;
 			}
 			try {
 				mat = Integer.parseInt(txtMat.getText());
+				if(mat > 100 || mat < 0) {
+					JOptionPane.showMessageDialog(this, "0 ~ 100 사이 값을 입력하시오", "입력값 오류", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
 			} catch (Exception e2) {
-				JOptionPane.showMessageDialog(this, "정수로 입력하시오.", "메시지", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "정수로 입력하시오.", "타입 오류", JOptionPane.INFORMATION_MESSAGE);
 				txtMat.requestFocus();
 				return;
 			}
 
 			int tot = kor + eng + mat;
-			double avg = tot / 3;
+			double avg = (double)tot / 3.0;
 
 			total.setText("총점 : " + (kor + eng + mat));
 			average.setText("평균 : " + avg);
@@ -216,7 +230,6 @@ public class Ex51 extends JFrame implements ActionListener {
 			if (!txtMat.getText().equals("")) {
 				txtMat.setText("");
 			}
-			
 		}
 		
 	}
