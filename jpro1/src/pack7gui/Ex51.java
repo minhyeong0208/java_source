@@ -113,7 +113,7 @@ public class Ex51 extends JFrame implements ActionListener {
 		switch (selImage) {
 		case 1:
 		case 2:
-			image = Toolkit.getDefaultToolkit().getImage("C:\\work\\jsou\\jpro1\\src\\pack7gui\\pack1.jpg"); 
+			image = Toolkit.getDefaultToolkit( ).getImage("C:\\work\\jsou\\jpro1\\src\\pack7gui\\pack1.jpg"); 
 			break;
 		case 3:
 		case 4:
@@ -121,7 +121,15 @@ public class Ex51 extends JFrame implements ActionListener {
 			image = Toolkit.getDefaultToolkit().getImage("C:\\work\\jsou\\jpro1\\src\\pack7gui\\pack8.jpg"); 
 			break;
 		}
-		//g.clearRect(0, 300, 400, 300);
+		
+		btn2.addActionListener(new ActionListener(){ //익명 클래스로 리스너 작성
+			public void actionPerformed(ActionEvent e){
+				if(e.getSource() == btn2) {
+					g.clearRect(0, 0, 400, 300);
+				}
+			}
+		});
+		//add(btn2);
 		
 		if(image != null)  // image가 null이 아닌 경우, drawImage  실행(초기값 null)
 			g.drawImage(image, x - image.getWidth(this) / 2, 240, this);
@@ -231,6 +239,7 @@ public class Ex51 extends JFrame implements ActionListener {
 				txtMat.setText("");
 			}
 		}
+		
 		
 	}
 
