@@ -10,12 +10,12 @@ import java.util.Scanner;
 // 키보드로 부서번호를 입력받아 해당 부서에 근무하는 직원자료 출력
 // 부서번호: 10 <==
 
-public class DbTest3 {
+public class DbTest2Ex {
 	private Connection conn;
 	private Statement stmt;
 	private ResultSet rs;
 	
-	public DbTest3() {
+	public DbTest2Ex() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");  // 외부에서 가져온 파일, 예외 처리 필요			
 		} catch (Exception e) {
@@ -38,7 +38,7 @@ public class DbTest3 {
 			System.out.print("부서 번호 입력: ");
 			String buser_num=sc.next();
 			System.out.println();
-			rs = stmt.executeQuery("select jikwon_no as 사번,jikwon_name as 이름, buser_name as 부서명, jikwon_jik as 직급, jikwon_pay as 연봉 from jikwon left outer join buser on jikwon.buser_num=buser.buser_no where buser_num=" + buser_num);
+			rs = stmt.executeQuery("select jikwon_no as 사번,jikwon_name as 이름, buser_name as 부서명, jikwon_jik as 직급, jikwon_pay as 연봉 from jikwon inner join buser on jikwon.buser_num=buser.buser_no where buser_num=" + buser_num);
 			
 			int cnt = 0;
 			System.out.println("사번\t이름\t부서명\t직급\t연봉");
@@ -52,8 +52,7 @@ public class DbTest3 {
 				System.out.println(jikwon_no + "\t" + jikwon_name + "\t" + buser_name + "\t" + jikwon_jik + "\t" + jikwon_pay);
 				cnt++;
 			}
-			rs = stmt.executeQuery("select count(*) as 건수 from jikwon left outer join buser on jikwon.buser_num=buser.buser_no where buser_num=" + buser_num);
-//			int cnt = rs.getInt("건수"); 
+
 			System.out.println("건수 : " + cnt);
 			sc.close();
 		} catch (Exception e) {
@@ -70,7 +69,7 @@ public class DbTest3 {
 	}
 	
 	public static void main(String[] args) {
-		new DbTest3();
+		new DbTest2Ex();
 
 	}
 

@@ -29,8 +29,8 @@ public class DbTest2CRUD {
 			
 			// 자료 추가
 			// autocommit이 기본 설정
-			//sql = "insert into sangdata values(5,'새우깡',55,3000)";
-			//stmt.executeUpdate(sql); // insert, update, delete는 executeUpdate를 사용하여 실행, 여기서 바로 오토커밋이 실행됨
+			sql = "insert into sangdata values(5,'새우깡',55,3000)";
+			stmt.executeUpdate(sql); // insert, update, delete는 executeUpdate를 사용하여 실행, 여기서 바로 오토커밋이 실행됨
 			
 			
 //			// autocommit을 수동으로 전환해 작업 : Transaction 처리가 필요
@@ -78,7 +78,7 @@ public class DbTest2CRUD {
 			
 			
 			
-;		} catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("err : " + e);
 		} finally {
 			try {
