@@ -14,7 +14,7 @@ public class DbTest4 {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			String url = "jdbc:mariadb://localhost:3306/test";
+			String url = "jdbc:mariadb://localhost:3306/mydb";
 			conn = DriverManager.getConnection(url, "root", "123");
 			stmt = conn.createStatement();
 			

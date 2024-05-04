@@ -15,8 +15,6 @@ public class DbTest1 {
 		// 1. Driver file loading
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");  // 외부에서 가져온 파일, 예외 처리 필요	
-			//
-			//
 		} catch (Exception e) {
 			System.out.println("로딩 실패 : " + e);
 			return;  // 로딩 실패 시, 생성자를 탈출하여 go를 출력하지 못한다.
