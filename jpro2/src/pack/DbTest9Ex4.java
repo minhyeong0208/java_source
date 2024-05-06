@@ -72,6 +72,7 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
+			txtTable.setText(null);
 			txtResult.setText(null);
 			String url = "jdbc:mariadb://localhost:3306/mydb";
 			conn = DriverManager.getConnection(url, "root", "123");
@@ -83,6 +84,22 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 
 			String sql2 = "";
 
+			if(txtNum.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "직원번호를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtNum.requestFocus();
+				return;
+			}
+			if(txtName.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "이름을 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtName.requestFocus();
+				return;
+			}
+			final String REGEX = "[0-9]+";
+			if(!txtNum.getText().matches(REGEX)) {
+				JOptionPane.showMessageDialog(this, "숫자만 입력 가능합니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtNum.requestFocus();
+			}
+			
 			int num = Integer.parseInt(txtNum.getText());
 			String name = txtName.getText();
 
@@ -105,19 +122,7 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 			sqlFinal = "SELECT jikwon_no, jikwon_name, jikwon_pay, jikwon_jik, jikwon_rating FROM jikwon";
 			pstmtFinal = conn.prepareStatement(sqlFinal);
 			rsFinal = pstmtFinal.executeQuery();
-			
-			if(txtNum.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "직원번호를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtNum.requestFocus();
-				return;
-			}
-			if(txtName.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "이름을 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtName.requestFocus();
-				return;
-			}
-			//System.out.println(txtName.getText());
-			
+				
 			String resultNum = "";
 			String resultName = "";
 
@@ -130,7 +135,6 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 				//txtTable.append(resultName);
 			}
 			
-			txtTable.append("담당 직원 정보\n");
 			txtTable.append("사번" + "\t" + "직원명" + "\t" + "연봉" + "\t" + "직급" + "\t" + "평점" + "\n");
 			if (resultNum.equals(resultName)) {
 				while (rsFinal.next()) {
@@ -144,7 +148,6 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 				String[] jik = {"이사","부장","과장","대리","사원"};
 				String jikResult = "";
 
-				//pstmt = conn.prepareStatement(sql2);
 				for (int i = 0; i < 5; i++) {
 					pstmt = conn.prepareStatement(sql2);
 					pstmt.setString(1, jik[i]);
@@ -159,24 +162,7 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 				txtTable.setText(null);
 				JOptionPane.showMessageDialog(this, "사번과 직원명이 일치하지 않습니다.");
 			}
-/*
-			txtResult.append("직급별 연봉평균\n");
-			sql2 = "SELECT jikwon_jik, avg(jikwon_pay) FROM jikwon GROUP BY jikwon_jik HAVING jikwon_jik = ?";
-			String[] jik = {"이사","부장","과장","대리","사원"};
-			String jikResult = "";
 
-			pstmt = conn.prepareStatement(sql2);
-			for (int i = 0; i < 5; i++) {
-				pstmt = conn.prepareStatement(sql2);
-				pstmt.setString(1, jik[i]);
-				rs = pstmt.executeQuery();
-				if(rs.next())
-					jikResult +=(jik[i] + ": " + rs.getString(2));
-				
-			}
-		
-			txtResult.append(jikResult);
-*/
 		} catch (Exception e2) {
 			// TODO: handle exception
 		}

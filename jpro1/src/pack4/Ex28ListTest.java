@@ -9,9 +9,9 @@ public class Ex28ListTest {
 		// List류의 ArrayList로 연습 : 중복 가능, 순서 O
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("lee"); 
-		list.add("lee"); // 중복 불가
+		list.add("lee"); 
 		list.add("lee");
-		list.add("hong");  // 입력 순서와 상관없이 출력된다.
+		list.add("hong");  
 		list.add("park"); 
 		//list.remove("park"); // 컬렉션에 들어간 내용을 삭제
 		//list.clear(); // 전체 삭제

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class DbTest8Ex3 extends JFrame implements ActionListener{
+public class DbTest8Ex2 extends JFrame implements ActionListener {
 	JTextField txtName = new JTextField("", 5);
 	JTextField txtJumin1 = new JTextField("", 5);
 	JTextField txtJumin2 = new JTextField("", 5);
@@ -27,8 +27,8 @@ public class DbTest8Ex3 extends JFrame implements ActionListener{
 	Connection conn;
 	PreparedStatement pstmt, pstmtName, pstmtJumin;  // 선처리 방식
 	ResultSet rs, rsName, rsJumin;
-	
-	public DbTest8Ex3() {
+
+	public DbTest8Ex2() {
 		setTitle("직원 자료");
 		
 		layInit();
@@ -76,73 +76,8 @@ public class DbTest8Ex3 extends JFrame implements ActionListener{
 		}
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	private void display() {
 		try {
-			txtResult.setText(null);
-			String url = "jdbc:mariadb://localhost:3306/mydb";
-			conn = DriverManager.getConnection(url, "root", "123");
-			
-			String sql = "";
-			String sqlName="";
-			String sqlJumin="";
-			
-			String name = txtName.getText();
-			String jumin1 = txtJumin1.getText();
-			String jumin2 = txtJumin2.getText();
-			String jumin = jumin1 + "-"+ jumin2;
-			
-			sql = "SELECT DISTINCT jikwon_no, jikwon_name, buser_name, buser_tel, jikwon_jik FROM jikwon LEFT OUTER JOIN gogek ON jikwon.jikwon_no=gogek.gogek_damsano INNER JOIN buser ON jikwon.buser_num=buser.buser_no where jikwon_no = (SELECT gogek_damsano FROM gogek WHERE gogek_name=? AND gogek_jumin=?)";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, jumin);
-			rs = pstmt.executeQuery();
-			
-			sqlName = "SELECT DISTINCT gogek_no,gogek_name FROM gogek WHERE gogek_name=?";
-			pstmtName = conn.prepareStatement(sqlName);
-			pstmtName.setString(1, name);
-			rsName = pstmtName.executeQuery();
-			
-			sqlJumin = "SELECT DISTINCT gogek_no, gogek_jumin FROM gogek WHERE gogek_jumin=?";
-			pstmtJumin = conn.prepareStatement(sqlJumin);
-			pstmtJumin.setString(1, jumin);
-			rsJumin = pstmtJumin.executeQuery();
-			
-			if(txtName.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "이름을 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtName.requestFocus();
-				return;
-			}
-			if(txtJumin1.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "주민번호 앞자리를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtJumin1.requestFocus();
-				return;
-			}
-			if(txtJumin2.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "주민번호 뒷자리를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtJumin2.requestFocus();
-				return;
-			}
-			if(txtJumin1.getText().length()!=6) {
-				JOptionPane.showMessageDialog(this, "주민번호 앞자리 자리수 오류", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtJumin1.requestFocus();
-				return;
-			}
-			if(txtJumin2.getText().length()!=7) {
-				JOptionPane.showMessageDialog(this, "주민번호 뒷자리 자리수 오류", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtJumin1.requestFocus();
-				return;
-			}
-			
-			try {
-				Integer.parseInt(txtJumin1.getText());
-				
-			} catch (Exception e2) {
-				JOptionPane.showMessageDialog(this, "dd", "알림", JOptionPane.INFORMATION_MESSAGE);
-				
-				return;
-			}
-			
 			String resultName = "";
 			String resultJumin = "";
 			
@@ -169,17 +104,91 @@ public class DbTest8Ex3 extends JFrame implements ActionListener{
 			} else {
 				JOptionPane.showMessageDialog(this, "이름과 주민번호가 일치하지 않습니다.");
 			}
-			/*
-			if(rs.next()) {
-				String result = rs.getString(1) + "\t" + 
-								rs.getString(2) + "\t" + 
-								rs.getString(3) + "\t" + 
-								rs.getString(4) + "\t" +
-								rs.getString(5) + "\n";
-				txtResult.append(result);
-			}
-			*/
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		try {
+			txtResult.setText(null);
+			String url = "jdbc:mariadb://localhost:3306/mydb";
+			conn = DriverManager.getConnection(url, "root", "123");
 			
+			String sql = "";
+			String sqlName="";
+			String sqlJumin="";
+			
+			String name = txtName.getText();
+			String jumin1 = txtJumin1.getText();
+			String jumin2 = txtJumin2.getText();
+			String jumin = jumin1 + "-"+ jumin2;
+			
+			sql = "SELECT DISTINCT jikwon_no, jikwon_name, buser_name, buser_tel, jikwon_jik FROM jikwon LEFT OUTER JOIN gogek ON jikwon.jikwon_no=gogek.gogek_damsano INNER JOIN buser ON jikwon.buser_num=buser.buser_no where jikwon_no = (SELECT gogek_damsano FROM gogek WHERE gogek_name=? AND gogek_jumin=?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, jumin);
+			rs = pstmt.executeQuery();
+			
+			// 고객번호 -> 주민번호
+			sqlName = "SELECT DISTINCT gogek_no,gogek_name FROM gogek WHERE gogek_name=?";
+			pstmtName = conn.prepareStatement(sqlName);
+			pstmtName.setString(1, name);
+			rsName = pstmtName.executeQuery();
+			
+			// 주민번호 -> 고객번호
+			sqlJumin = "SELECT DISTINCT gogek_no, gogek_jumin FROM gogek WHERE gogek_jumin=?";
+			pstmtJumin = conn.prepareStatement(sqlJumin);
+			pstmtJumin.setString(1, jumin);
+			rsJumin = pstmtJumin.executeQuery();
+			
+			// TextField 값이 없는 경우 실행
+			if(txtName.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "이름을 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtName.requestFocus();
+				return;
+			}
+			if(txtJumin1.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "주민번호 앞자리를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtJumin1.requestFocus();
+				return;
+			}
+			if(txtJumin2.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "주민번호 뒷자리를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtJumin2.requestFocus();
+				return;
+			}
+			if(txtJumin1.getText().length()!=6) {
+				JOptionPane.showMessageDialog(this, "주민번호 앞자리 자리수 오류", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtJumin1.requestFocus();
+				return;
+			}
+			if(txtJumin2.getText().length()!=7) {
+				JOptionPane.showMessageDialog(this, "주민번호 뒷자리 자리수 오류", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtJumin1.requestFocus();
+				return;
+			}
+			
+			// 주민번호 숫자 입력만 가능
+			try {
+				Integer.parseInt(txtJumin1.getText());
+				
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(this, "숫자만 입력 가능합니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			
+			try {
+				Integer.parseInt(txtJumin2.getText());
+				
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(this, "숫자만 입력 가능합니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			
+			// 결과 출력
+			display();
 		} catch (Exception e2) {
 			// TODO: handle exception
 		} finally {
@@ -191,9 +200,11 @@ public class DbTest8Ex3 extends JFrame implements ActionListener{
 				if(conn != null) conn.close();
 			} catch (Exception e2) { }
 		}
+		
 	}
 	
 	public static void main(String[] args) {
-		new DbTest8Ex3();
+		new DbTest8Ex2();
 	}
+
 }

@@ -94,15 +94,23 @@ public class DbTest5RecMove extends JFrame implements ActionListener {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			processDb();   
+			//processDb();   
+			String url = "jdbc:mariadb://localhost:3306/mydb";
+			conn = DriverManager.getConnection(url, "root", "123");  // 연결 객체를 만듦
+			
+			stmt = conn.createStatement();  
+			
+			rs = stmt.executeQuery("select jikwon_no,jikwon_name from jikwon"); // 여기서 읽음, statement를 사용하면 sql 문장을 매번 써야한다.
+			rs.next();
+			display();  // 첫번째 데이터가 보이도록 함
 		} catch (Exception e) {
 			System.out.println("accDb err : " + e);
 		}
 	}
-	
+	/*
 	private void processDb() {  // DB를 닫지 않아야 함.
 		try {
-			String url = "jdbc:mariadb://localhost:3306/test";
+			String url = "jdbc:mariadb://localhost:3306/mydb";
 			conn = DriverManager.getConnection(url, "root", "123");  // 연결 객체를 만듦
 			
 			stmt = conn.createStatement();  
@@ -113,7 +121,7 @@ public class DbTest5RecMove extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			System.out.println("processDb err : " + e);
 		}
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		new DbTest5RecMove();
