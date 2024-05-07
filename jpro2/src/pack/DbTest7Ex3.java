@@ -17,7 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class DbTest9Ex4 extends JFrame implements ActionListener {
+public class DbTest7Ex3 extends JFrame implements ActionListener {
 	JTextField txtNum = new JTextField("", 10);
 	JTextField txtName = new JTextField("", 10);
 	JTextArea txtTable = new JTextArea();
@@ -29,7 +29,7 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 	PreparedStatement pstmt, pstmtNum, pstmtName, pstmtFinal; // 선처리 방식
 	ResultSet rs, rsNum, rsName, rsFinal;
 
-	public DbTest9Ex4() {
+	public DbTest7Ex3() {
 		setTitle("로그인");
 
 		layInit();
@@ -68,13 +68,13 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 			System.out.println("accDb err : " + e);
 		}
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
 			txtTable.setText(null);
 			txtResult.setText(null);
-			String url = "jdbc:mariadb://localhost:3306/mydb";
+			String url = "jdbc:mariadb://localhost:3306/test";
 			conn = DriverManager.getConnection(url, "root", "123");
 
 			String sql = "";
@@ -165,12 +165,18 @@ public class DbTest9Ex4 extends JFrame implements ActionListener {
 
 		} catch (Exception e2) {
 			// TODO: handle exception
+		} finally {
+			try {
+				if(rs != null) rs.close(); 
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) { }
 		}
 
 	}
 
 	public static void main(String[] args) {
-		new DbTest9Ex4();
+		new DbTest7Ex3();
 
 	}
 

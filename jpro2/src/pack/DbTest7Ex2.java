@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class DbTest8Ex2 extends JFrame implements ActionListener {
+public class DbTest7Ex2 extends JFrame implements ActionListener {
 	JTextField txtName = new JTextField("", 5);
 	JTextField txtJumin1 = new JTextField("", 5);
 	JTextField txtJumin2 = new JTextField("", 5);
@@ -28,7 +28,7 @@ public class DbTest8Ex2 extends JFrame implements ActionListener {
 	PreparedStatement pstmt, pstmtName, pstmtJumin;  // 선처리 방식
 	ResultSet rs, rsName, rsJumin;
 
-	public DbTest8Ex2() {
+	public DbTest7Ex2() {
 		setTitle("직원 자료");
 		
 		layInit();
@@ -78,6 +78,50 @@ public class DbTest8Ex2 extends JFrame implements ActionListener {
 	
 	private void display() {
 		try {
+			// TextField 값이 없는 경우 실행
+			if(txtName.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "이름을 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtName.requestFocus();
+				return;
+			}
+			if(txtJumin1.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "주민번호 앞자리를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtJumin1.requestFocus();
+				return;
+			}
+			if(txtJumin2.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "주민번호 뒷자리를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtJumin2.requestFocus();
+				return;
+			}
+			if(txtJumin1.getText().length()!=6) {
+				JOptionPane.showMessageDialog(this, "주민번호 앞자리 자리수 오류", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtJumin1.requestFocus();
+				return;
+			}
+			if(txtJumin2.getText().length()!=7) {
+				JOptionPane.showMessageDialog(this, "주민번호 뒷자리 자리수 오류", "알림", JOptionPane.INFORMATION_MESSAGE);
+				txtJumin2.requestFocus();
+				return;
+			}
+			
+			// 주민번호 숫자 입력만 가능
+			try {
+				Integer.parseInt(txtJumin1.getText());
+				
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(this, "숫자만 입력 가능합니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			
+			try {
+				Integer.parseInt(txtJumin2.getText());
+				
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(this, "숫자만 입력 가능합니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			
 			String resultName = "";
 			String resultJumin = "";
 			
@@ -143,50 +187,6 @@ public class DbTest8Ex2 extends JFrame implements ActionListener {
 			pstmtJumin.setString(1, jumin);
 			rsJumin = pstmtJumin.executeQuery();
 			
-			// TextField 값이 없는 경우 실행
-			if(txtName.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "이름을 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtName.requestFocus();
-				return;
-			}
-			if(txtJumin1.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "주민번호 앞자리를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtJumin1.requestFocus();
-				return;
-			}
-			if(txtJumin2.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "주민번호 뒷자리를 입력하시오.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtJumin2.requestFocus();
-				return;
-			}
-			if(txtJumin1.getText().length()!=6) {
-				JOptionPane.showMessageDialog(this, "주민번호 앞자리 자리수 오류", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtJumin1.requestFocus();
-				return;
-			}
-			if(txtJumin2.getText().length()!=7) {
-				JOptionPane.showMessageDialog(this, "주민번호 뒷자리 자리수 오류", "알림", JOptionPane.INFORMATION_MESSAGE);
-				txtJumin1.requestFocus();
-				return;
-			}
-			
-			// 주민번호 숫자 입력만 가능
-			try {
-				Integer.parseInt(txtJumin1.getText());
-				
-			} catch (Exception e2) {
-				JOptionPane.showMessageDialog(this, "숫자만 입력 가능합니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				return;
-			}
-			
-			try {
-				Integer.parseInt(txtJumin2.getText());
-				
-			} catch (Exception e2) {
-				JOptionPane.showMessageDialog(this, "숫자만 입력 가능합니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
-				return;
-			}
-			
 			// 결과 출력
 			display();
 		} catch (Exception e2) {
@@ -204,7 +204,7 @@ public class DbTest8Ex2 extends JFrame implements ActionListener {
 	}
 	
 	public static void main(String[] args) {
-		new DbTest8Ex2();
+		new DbTest7Ex2();
 	}
 
 }

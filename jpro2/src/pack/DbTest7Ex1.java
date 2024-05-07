@@ -67,7 +67,7 @@ public class DbTest7Ex1 extends JFrame implements ActionListener {
 		try {
 			String result = "";
 			
-			DecimalFormat deci = new DecimalFormat("###,###,###");
+			DecimalFormat deci = new DecimalFormat("#,##0");
 			
 			txtResult.append("코드" + "\t" + "상품명" + "\t" + "수량" + "\t" + "단가" + "\t" + "금액" + "\n");
 			while(rs.next()) {
@@ -144,7 +144,7 @@ public class DbTest7Ex1 extends JFrame implements ActionListener {
 			display();
 
 		} catch (Exception e2) {
-			// TODO: handle exception
+			JOptionPane.showMessageDialog(this, "코드가 중복되었습니다.");
 		} finally {
 			try {
 				if(rs != null) rs.close(); 
