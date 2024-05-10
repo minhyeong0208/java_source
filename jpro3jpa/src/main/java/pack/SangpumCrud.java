@@ -125,6 +125,7 @@ public class SangpumCrud {
 				System.out.printf("%s %s %s %s\n", sangtab2.getCode(), sangtab2.getSang(), sangtab2.getSu(), sangtab2.getDan());
 			}
 			
+			
 		} catch (Exception e) {
 			System.out.println("err : " + e);
 		} finally {

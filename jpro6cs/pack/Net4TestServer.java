@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 // jpro6sc 프로젝트는 class 파일과 java 파일의 위치를 같은 곳에 위치하도록 설정
 public class Net4TestServer {
@@ -29,12 +30,12 @@ public class Net4TestServer {
 		Socket socket = null;  // TCP 기반의 통신용 클래스(파일)
 		try {
 			ss = new ServerSocket(9999);   // 이거는 서버 소켓임.
-			System.out.println("Server start...");
+			System.out.println("서버 서비스 시작..."); // 둘 사이의 통신이 가능한지만 확인
 			socket = ss.accept(); // 서버 소켓으로부터 클라이언트 컴퓨터와 통신하기 위한 개별 소켓을 생성  // 무한 루프에 빠져 있는 상태. 클라이언트가 이 서버에 접속하기를 기다리고 있다.
 			
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream())); // 소켓으로부터 데이터를 받는다.
+			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8)); // 소켓으로부터 데이터를 받는다.
 			String data = reader.readLine();
-			System.out.println("Receive data : " + data);  // 메시지를 일방적으로 받기만 하는 상태이다.
+			System.out.println("수신 자료 : " + data);  // 메시지를 일방적으로 받기만 하는 상태이다.
 			
 			reader.close();
 			socket.close();

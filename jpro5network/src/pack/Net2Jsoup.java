@@ -19,7 +19,7 @@ public class Net2Jsoup {
 		try {
 			//System.out.println(URLEncoder.encode("백설공주", "UTF-8"));  // 참고, 백설 공주를 부분으로 끊어 인코딩함.
 			
-			String url = "https://ko.wikipedia.org/wiki/" + URLEncoder.encode("KTX", "UTF-8");
+			String url = "https://ko.wikipedia.org/wiki/" + URLEncoder.encode("백설공주", "UTF-8");
 			// Document : 웹페이지 문서
 			Document doc = Jsoup.connect(url).get();
 			String text = doc.text();  // 웹 문서의 모든 텍스트를 읽어온 상태
