@@ -54,7 +54,7 @@ public class Net7SimpleHttpServer {
 				System.out.println("Request : " + requestLine);
 				
 				// HTTP 요청에 대한 응답 전송
-				out.println("HTTP/1.1 200 OK");
+				out.println("HTTP/1.1 404 Not Found");
 				out.println("Content-Type:text/html;charset=UTF-8");
 				out.println();
 				out.println("<html><head><title>연습</title></head>");

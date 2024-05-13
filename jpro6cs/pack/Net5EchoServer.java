@@ -18,7 +18,7 @@ public class Net5EchoServer {
 	
 	public Net5EchoServer() {
 		try {
-			ss = new ServerSocket(8887); // 서버 객체 생성
+			ss = new ServerSocket(8888); // 서버 객체 생성
 			System.out.println("서버 서비스 중...");
 			
 			socket = ss.accept();  // 클라이언트가 접속하기를 대기.. -> 접속하면 바로 socket 객체를 만든다

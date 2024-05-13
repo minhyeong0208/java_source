@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Net6ChatClient {
-	private static final String HOST = "192.168.0.21";
+	private static final String HOST = "192.168.0.28";
 	private static final int PORT = 5000;
 	
 	public static void main(String[] args) throws IOException{
