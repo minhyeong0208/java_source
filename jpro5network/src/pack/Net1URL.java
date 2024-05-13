@@ -27,7 +27,7 @@ public class Net1URL {
 			// parsing
 			// parser
 			String line = "";   // 한 줄씩 읽기 위해 선언
-			while((line = br.readLine()) != null) {  // 줄이 끝나기 전까지 반복
+			while((line = br.readLine()) != null) {  // 줄이 끝나기 전까ek지 반복
 				pw.println(line);  // console로 출력
 				fw.println(line);  // file로 저장
 				fw.flush();  // 버퍼 비우기
