@@ -1,0 +1,100 @@
+@charset "UTF-8";
+/* CSS 주석 사용 */
+
+#i2 {
+	background-color: yellow;
+	color: red;
+	font-size: 20px;
+}
+
+/* 복수 개의 요소에 대해 스타일 적용 가능 */
+h1, h2{
+	text-decoration: line-through; /* 취소선 */
+}
+
+/* table 태그에 대한 style */
+table { width: 70%; margin-bottom: 10px; border: 1px solid #8000ff; } 
+
+/* table의 자식 tr의 자식 td에 적용 */
+table tr td {
+	padding: 5px 10px;
+	border-top: 1px dotted rgb(0,0,255);
+	border-bottom: 3px double rgb(255,0,0);
+}
+
+input {
+	border: 5px solid;
+	background-color: rgb(0%,60%,60%);
+}
+
+/* input 태그 내 class 속성이 btnOk인 경우, 스타일 적용 */
+input.btnOk {
+	border: 1px dotted;
+	background-color: olive;
+}
+
+/* 
+동적 선택자(Dynamic Selector)
+element에 콜론(:)을 사용하면 동적 선택자
+*/
+input:focus {
+	background-color: #aabbcc;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	color: red;
+}
+
+a:active {
+	color: yellow; font-family: 궁서;
+}
+
+a:hover {
+	color: silver; font-size: 30px; cursor: crosshair;
+}
+
+i, strong {
+	color: #000;  /* #cba = #ccbbaa */
+	background-color: silver;
+}
+
+
+/* 셀렉터 : 부모, 자식, 자손 관계 */
+b { font-size: 8px; }
+
+/* div 태그의 자손 b 태그 */
+div b { font-size: 16px; }
+
+/* div 태그의 자식 b 태그 */
+div > b { font-size: 24px; }
+
+/* div 태그의 자식 span 태그의 자식 b 태그 */
+div > span > b { font-size: 32px; }
+
+/* div 태그의 자식 b 태그 중 id 속성이 hi인 태그 */
+div b#hi { font-size: 40px; }
+
+/* div 태그의 자식 b 태그 중 class 속성이 hello인 태그 */
+div b.hello { font-size: 46px; }
+
+/* div 태그는 기본적으로 height가 없음. 아래와 같이 설정*/
+div#pic {
+	height: 130px; background-color: yellow; 
+	background-image: url('../images/snow.png');
+}
+
+img {
+	border: 3px dashed red;
+}
+
+
+
+
+
+
+
+
