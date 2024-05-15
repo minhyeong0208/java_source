@@ -33,7 +33,8 @@ public class Net4TestServer {
 			System.out.println("서버 서비스 시작..."); // 둘 사이의 통신이 가능한지만 확인
 			socket = ss.accept(); // 서버 소켓으로부터 클라이언트 컴퓨터와 통신하기 위한 개별 소켓을 생성  // 무한 루프에 빠져 있는 상태. 클라이언트가 이 서버에 접속하기를 기다리고 있다.
 			
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8)); // 소켓으로부터 데이터를 받는다.
+			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(),
+					StandardCharsets.UTF_8)); // 소켓으로부터 데이터를 받는다.
 			String data = reader.readLine();
 			System.out.println("수신 자료 : " + data);  // 메시지를 일방적으로 받기만 하는 상태이다.
 			
