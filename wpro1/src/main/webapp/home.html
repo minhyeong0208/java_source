@@ -4,58 +4,46 @@
 <meta charset="UTF-8">
 <title>홈페이지</title>
 <style type="text/css">
-.form-wrap {
-	width: 600px; height: 400px;
-	background-color: white;
-	margin: 0 auto;
-	border: 1px double black;
-}
+/* 왼쪽 div 태그 style */
+#left { float: left; width: 30%; }
 
-body {
-	background-image: url('images/snow.png');
-}
+.list { list-style: none; margin-bottom: 20px; }
 
-/* 왼쪽 div 태그 style*/
-#left { float: left; width: 150px;}
-.list {list-style: none; margin-bottom: 20px; }
 a { text-decoration: none; color: black; }
 
-/* 오른쪽 div 태그 style*/
-#right { float: right; width: 450px; height:400px;} 
-#header { margin-top: 2px; width: 448px; height: 75px; }
-#footer { text-align: center; margin-top: 10px; }
+/* 오른쪽 div 태그 style */
+#right { float: right; width: 70%; }
 
 /* 이미지 가운데 배치 */
-.center {
-  display: block;
-  margin-left: auto; margin-right: auto;
-  width: 75px; height: 75px;
+#center { 
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75px;
+	height: 75px;
 }
-
 </style>
 </head>
 <body>
-	<div class="form-wrap">
-		<div id="left">
-			<ul>
-				<li class="list" style="margin-top:75px;">메뉴</li>
-				<li class="list"><a href="gohere.html">여기 갈래</a></li>
-				<li class="list"><a href="likethis.html">이거 좋아</a></li>
-				<li class="list"><a href="home.html">홈페이지</a></li>
-			</ul>
-		</div>
-		<div id="right">
-			<div id="header">
-				<a href="home.html"><img src="images/nuri.png" class="center"></a>
-			</div>
-			<div id="iframe">
-				<iframe src="https://cafe.daum.net/flowlife" width="99%" height="225px"></iframe>
-			</div>
-			<div id="footer">
-				(주) 에이콘 아카데미 관리 : 홍길동<br>
-				회사 소개. 비즈니스.운영정책
-			</div>
-		</div>
+	<div id="left">
+		<ul>
+			<li class="list" style="margin-top: 75px;">메뉴</li>
+			<li class="list"><a href="test5.html" target="homef">여기 갈래</a></li>
+			<li class="list"><a href="https://www.daum.net" target="homef">이거 좋아</a></li>
+			<li class="list"><a href="https://cafe.daum.net/flowlife" target="homef">홈페이지</a></li>
+		</ul>
 	</div>
+	<div id="right">
+		<header>
+			<a href="home.html"><img src="images/nuri.png" id="center"></a>
+		</header>
+		<div id="iframe">
+			<iframe src="https://cafe.daum.net/flowlife" name="homef" width="99%" height="250px"></iframe>
+		</div>
+		<footer style="">
+			(주) 에이콘 아카데미 관리 : 홍길동<br> 회사 소개. 비즈니스.운영정책
+		</footer>
+	</div>
+
 </body>
 </html>
