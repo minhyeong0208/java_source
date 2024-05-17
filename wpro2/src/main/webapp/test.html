@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+function func1(para1, para2) {
+    //document.write(`<br>func1() 함수 실행 -> ${para1}, ${para2}`);
+    return para1, para2;
+}
+
+function func2() {
+    document.write(`func2() 함수 실행`);
+    
+    func1(7);
+    func1(7, 8);
+    func1(7, 8, 9);
+}
+document.write(func1(2,3));
+func2();
+</script>
+</body>
+</html>
