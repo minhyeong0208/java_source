@@ -4,24 +4,130 @@
 <meta charset="UTF-8">
 <title>간단 계산기</title>
 <script type="text/javascript">
+	
 	window.onload = () => {
 		let display;
-		let num;
+		let str1 = "";
+		let num, result = 0;
 		
 		
 		document.getElementById("num1").onclick=function(){
 			num = document.getElementById("num1").innerHTML; 
-			console.log(num);
+			str1 += num;	
+			document.getElementById("display").value = str1;
 		}
 		
 		document.getElementById("num2").onclick=function(){
 			num = document.getElementById("num2").innerHTML; 
-			console.log(num);
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("num3").onclick=function(){
+			num = document.getElementById("num3").innerHTML; 
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("num4").onclick=function(){
+			num = document.getElementById("num4").innerHTML; 
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("num5").onclick=function(){
+			num = document.getElementById("num5").innerHTML; 
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("num6").onclick=function(){
+			num = document.getElementById("num6").innerHTML; 
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("num7").onclick=function(){
+			num = document.getElementById("num7").innerHTML; 
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("num8").onclick=function(){
+			num = document.getElementById("num8").innerHTML; 
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("num9").onclick=function(){
+			num = document.getElementById("num9").innerHTML; 
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("num0").onclick=function(){
+			num = document.getElementById("num0").innerHTML; 
+			str1 += num;	
+			document.getElementById("display").value = str1;
+		}
+		
+		
+		document.getElementById("plus").onclick=function(){
+			num = document.getElementById("plus").innerHTML; 
+			str1 += num;
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("minus").onclick=function(){
+			num = document.getElementById("minus").innerHTML; 
+			str1 += num;
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("multi").onclick=function(){
+			num = document.getElementById("multi").innerHTML; 
+			str1 += num;
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("multi").onclick=function(){
+			num = document.getElementById("multi").innerHTML; 
+			str1 += num;
+			document.getElementById("display").value = str1;
+		}
+		document.getElementById("div").onclick=function(){
+			num = document.getElementById("div").innerHTML; 
+			str1 += num;
+			document.getElementById("display").value = str1;
 		}
 		
 		document.getElementById("calc").onclick=function(){
-			num = document.getElementById("plus").innerHTML; 
-			console.log(num);
+			if(str1.includes('+')){
+				str2=str1.split('+');
+				/*or(let i = 0; i < str2.length - 1; i++){
+					result = parseInt(str2[i]) + parseInt(str2[i + 1])
+				}*/
+				document.getElementById("result").value = parseInt(str2[0]) + parseInt(str2[1]);
+				str1="";
+				str1 = parseInt(str2[0]) + parseInt(str2[1]);
+			} else if(str1.includes('-')){
+				str2=str1.split('-');
+				for(let i = 0; i < str2.length - 1; i++){
+					result = parseInt(str2[i]) - parseInt(str2[i + 1])
+				}
+				document.getElementById("result").value = result;
+				str1="";
+				str1 = result;
+			} else if(str1.includes('*')){
+				str2=str1.split('*');
+				for(let i = 0; i < str2.length - 1; i++){
+					result = parseInt(str2[i]) * parseInt(str2[i + 1])
+				}
+				document.getElementById("result").value = result;
+				str1="";
+				str1 = result;
+			} else if(str1.includes('/')){
+				str2=str1.split('/');
+				for(let i = 0; i < str2.length - 1; i++){
+					result = parseInt(str2[i]) / parseInt(str2[i + 1])
+				}
+				document.getElementById("result").value = result;
+				str1="";
+				str1 = result;
+			}
+		}
+		document.getElementById("ac").onclick=function(){
+			document.getElementById("display").value = null;
+			document.getElementById("result").value = null;
 		}
 	}
 	
@@ -55,31 +161,31 @@ input:focus {
 				placeholder="result"></td>
 		</tr>
 		<tr>
-			<td colspan="3">AC</td>
-			<td>/</td>
+			<td colspan="3" id='ac'>AC</td>
+			<td id="div">/</td>
 		</tr>
 		<tr>
 			<td id="num7">7</td>
 			<td id="num8">8</td>
 			<td id="num9">9</td>
-			<td id="calc">*</td>
+			<td id="multi">*</td>
 		</tr>
 		<tr>
 			<td id="num4">4</td>
 			<td id="num5">5</td>
 			<td id="num6">6</td>
-			<td id="calc">-</td>
+			<td id="minus">-</td>
 		</tr>
 		<tr>
 			<td id="num1">1</td>
 			<td id="num2">2</td>
 			<td id="num3">3</td>
-			<td id="calc">+</td>
+			<td id="plus">+</td>
 		</tr>
 		<tr>
-			<td colspan="2">0</td>
+			<td colspan="2" id="num0">0</td>
 			<td>.</td>
-			<td >=</td>
+			<td id="calc">=</td>
 		</tr>
 	</table>
 	<div id="show"></div>
