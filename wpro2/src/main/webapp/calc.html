@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>간단 계산기</title>
+<script type="text/javascript">
+	window.onload = () => {
+		let display;
+		let num;
+		
+		
+		document.getElementById("num1").onclick=function(){
+			num = document.getElementById("num1").innerHTML; 
+			console.log(num);
+		}
+		
+		document.getElementById("num2").onclick=function(){
+			num = document.getElementById("num2").innerHTML; 
+			console.log(num);
+		}
+		
+		document.getElementById("calc").onclick=function(){
+			num = document.getElementById("plus").innerHTML; 
+			console.log(num);
+		}
+	}
+	
+		
+</script>
+<style>
+table {
+	border-collapse: collapse;
+}
+td {
+	padding: 5px 10px;
+	text-align: center;
+}
+input {
+	text-align: right;
+	border: none;
+}
+input:focus {
+	outline: none;
+}
+</style>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td colspan="4"><input type="text" id="display"
+				placeholder="display"></td>
+		</tr>
+		<tr>
+			<td colspan="4"><input type="text" id="result"
+				placeholder="result"></td>
+		</tr>
+		<tr>
+			<td colspan="3">AC</td>
+			<td>/</td>
+		</tr>
+		<tr>
+			<td id="num7">7</td>
+			<td id="num8">8</td>
+			<td id="num9">9</td>
+			<td id="calc">*</td>
+		</tr>
+		<tr>
+			<td id="num4">4</td>
+			<td id="num5">5</td>
+			<td id="num6">6</td>
+			<td id="calc">-</td>
+		</tr>
+		<tr>
+			<td id="num1">1</td>
+			<td id="num2">2</td>
+			<td id="num3">3</td>
+			<td id="calc">+</td>
+		</tr>
+		<tr>
+			<td colspan="2">0</td>
+			<td>.</td>
+			<td >=</td>
+		</tr>
+	</table>
+	<div id="show"></div>
+</body>
+</html>
