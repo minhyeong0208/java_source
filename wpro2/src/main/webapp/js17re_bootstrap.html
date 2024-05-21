@@ -42,7 +42,7 @@
 		}
 		
 		// 정규 표현식 - 여러 용도 중 입력 자료 검사용
-		let str = "123Abc가나다45홍 asdf1 23길동";
+		let str = "123Abc가나다45홍asdf123길동";
 		console.log(str.match(/[1]/));  // 일치하는 값 찾기 : match() -> 반환값은 배열. 최초의 1개만 반환
 		console.log(str.match(/[1]/g)); // g : global -> 해당되는 모든 값을 반환.
 		console.log(str.match(/[0-9]/g)); // 0~9인 숫자값들을 반환
@@ -122,7 +122,7 @@
 		</table>
 
 	</form>
-
+	
 	<button type="button" class="btn">Basic</button>
 	<button type="button" class="btn btn-primary">Primary</button>
 	<button type="button" class="btn btn-secondary">Secondary</button>
