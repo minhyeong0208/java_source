@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단 출력</title>
+<script type="text/javascript">
+	//let col;
+	window.onload = () => {
+		document.getElementById("sel").onchange = function() {
+			let dan = num = "";
+			let arr = new Array();
+			
+			const sel = frm.sel.options[frm.sel.selectedIndex].value;
+			
+			let t = document.createTextNode(sel + "단");
+			document.getElementById("tb").appendChild(t);
+			for(let i = 1; i < 10; i++){
+				addRow(sel, i);
+			}
+		}
+	}
+	
+	function addRow(sel, i) {
+		let row = document.createElement('tr');
+		let col = addCol(sel);
+		row.appendChild(col); // <tr><td>단수</td></tr>
+		col = addCol('*');
+		row.appendChild(col);
+		col = addCol(i);
+		row.appendChild(col);
+		col = addCol('=');
+		row.appendChild(col);
+		col = addCol(sel * i);
+		row.appendChild(col);
+		
+		document.getElementById("tb").appendChild(row);
+	}
+	
+	function addCol(para) {
+		// <td> 생성
+		let col = document.createElement('td');
+		let text = document.createTextNode(para);
+		col.appendChild(text);
+		return col; 
+	}
+	
+	function clear(){
+		let target = document.getElementById('tb');
+
+		while(target.hasChildNodes()){
+			target.removedChild(target.childNodes[0]);
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>구구단 출력</h2>
+	<form action="#" name="frm">
+		단 :
+		<select name="sel" id="sel">
+			<option value="">선택</option>
+			<option value="2">2단</option>
+			<option value="3">3단</option>
+			<option value="4">4단</option>
+			<option value="5">5단</option>
+			<option value="6">6단</option>
+			<option value="7">7단</option>
+			<option value="8">8단</option>
+			<option value="9">9단</option>
+		</select>
+		<button onclick="clear()">삭제</button>
+	</form>
+	<br>
+	<span id="header"></span>
+	<table id="tab">
+		<tbody id="tb"></tbody>
+	</table>
+</body>
+</html>
