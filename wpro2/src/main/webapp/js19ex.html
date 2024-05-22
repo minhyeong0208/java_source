@@ -6,7 +6,7 @@
 <script type="text/javascript">
 	//let col;
 	window.onload = () => {
-		document.getElementById("sel").oninput = function() {		
+		document.getElementById("sel").onchange = function() {		
 			let sel = frm.sel.options[frm.sel.selectedIndex].value;
 			
 			let t = document.createTextNode(sel + "단");
@@ -44,7 +44,7 @@
 		while(target.hasChildNodes()){
 			target.removeChild(target.childNodes[0]);
 		}
-	}
+	}d
 </script>
 </head>
 <body>
