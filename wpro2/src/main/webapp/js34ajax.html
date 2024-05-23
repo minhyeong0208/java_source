@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX</title>
+<script type="text/javascript">
+	window.onload = () => {
+		document.querySelector("#btnOk").onclick = function() {
+			start();
+		}		
+	}
+	
+	let xhr;
+	// ajax origin
+	function start() {
+		//alert('a');
+		xhr = new XMLHttpRequest();  // AJAX 지원 js 객체, 대소문자를 구분함.
+		
+		xhr.open('get', 'js34text.txt', true);  // 두 번째 인자의 데이터를 get 방식으로
+		
+		xhr.onreadystatechange = function() {
+			process();
+		}
+		
+		xhr.send(null);
+	}
+	
+	function process() {
+		let data = xhr.responseText;
+		console.log(data);
+	}
+</script>
+</head>
+<body>
+	<h2>Ajax test</h2>
+	<button id="btnOk">Ajax 원리를 찾아서</button><hr>
+	<div id="disp"></div>
+</body>
+</html>
