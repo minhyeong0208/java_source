@@ -12,8 +12,8 @@
 		*/
 		
 		class Class1 {
-			addr = '서울';   // 멤버 필드. prototype 속성. let, const (X)
-			name; // 생성자로 값을 받을 때는 생략이 가능. 가독성을 위해 적어도 됨.
+			addr = 'seoul';   // 멤버 필드. prototype 속성. let, const (X)
+			//name; // 생성자로 값을 받을 때는 생략이 가능. 가독성을 위해 적어도 됨.
 			
 			constructor(name) { // 생성자.
 				this.name = name; // 각 인스턴스의 멤버 변수로 생성됨.
@@ -27,13 +27,13 @@
 			}
 		}
 		
-		let c1 = new Class1('신기해');
+		let c1 = new Class1('tester');
 		document.write("<br>", c1, " ", typeof Class1, " ",typeof c1);  // Class1의 타입 : function.
 		document.write("<br> 주소는 " + c1.addr);
 		document.write("<br> sayHi() 메소드 호출 " + c1.sayHi());
 		document.write('<br>');
 		
-		let c2 = new Class1("한국인");
+		let c2 = new Class1("korean");
 		document.write("<br> sayHi() 메소드 호출 " + c2.sayHi());
 		document.write('<hr>');
 		
