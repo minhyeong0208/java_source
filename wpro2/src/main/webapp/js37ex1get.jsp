@@ -4,6 +4,11 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/plain; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+String gender = request.getParameter("gen");
+%>
+
 {"jikwon": 
 [
 <%
@@ -14,12 +19,17 @@ ResultSet rs = null;
 try {
 	Class.forName("org.mariadb.jdbc.Driver"); 
 	
-	String url = "jdbc:mariadb://localhost:3306/test";
+	String url = "jdbc:mariadb://localhost:3306/mydb";
 	conn = DriverManager.getConnection(url, "root", "123");
 	
-	String sql = "select jikwon_no, jikwon_name, jikwon_jik, substr(jikwon_ibsail,1,4) ibsail from jikwon where";
+	String sql = "";
+	if(!gender.equals("전체")) {
+		sql = "select jikwon_no, jikwon_name, jikwon_jik, substr(jikwon_ibsail,1,4) ibsail from jikwon where jikwon_gen=?";
+	} else {
+		sql = "select jikwon_no, jikwon_name, jikwon_jik, substr(jikwon_ibsail,1,4) ibsail from jikwon";
+	}
 	pstmt = conn.prepareStatement(sql);
-	//pstmt.setString(1,'m');
+	pstmt.setString(1,gender);
 	rs = pstmt.executeQuery();
 	
 	String result = "";
