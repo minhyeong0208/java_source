@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 	const myPromise = (seconds) => new Promise((resolve, reject) => {  // resolve로 이동하기 위해 then 사용, reject로 이동하기 위해 catch 사용
 		setTimeout(() => {
-			let a = 2;  // 짝수인 경우 resolve, 홀수인 경우, reject을 만난다.
+			let a = 3;  // 짝수인 경우 resolve, 홀수인 경우, reject을 만난다.
 			
 			if(a % 2 === 0) resolve('이 값이 then 메소드의 매개변수로 전달.');
 			else reject('에러 처리 : reject이 실행되면 catch로 받을 수 있다.');
@@ -34,6 +34,7 @@
 		}
 	}
 */
+	
 	
 	async function gogo() {
 		try {

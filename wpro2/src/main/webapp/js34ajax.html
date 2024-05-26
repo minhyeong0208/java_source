@@ -23,9 +23,9 @@
 		// cors를 따름 : Same-Origin Policy(SOP)는 웹 보안의 기본적인 원칙 중 하나
 		// open(요청방식(get/post), 요청파일명, 동기(false)/비동기(true))
 //		xhr.open('get', 'js34text.txt', true);  // txt 파일 읽기
-//		xhr.open('get', 'js34csv.txt', true);   // csv 파일 읽기
+		xhr.open('get', 'js34csv.txt', true);   // csv 파일 읽기
 //		xhr.open('get', 'js34.xml', true);      // xml 파일 읽기
-		xhr.open('get', 'js34.json', true);      // json 파일 읽기 => csv, json 의 확장자는 txt라도 상관없음
+//		xhr.open('get', 'js34.json', true);      // json 파일 읽기 => csv, json 의 확장자는 txt라도 상관없음
 		
 		// onreadystatechange : 접속상태를 확인
 		xhr.onreadystatechange = function() {
@@ -48,15 +48,15 @@
 	
 	function process() {
 		// txt 파일인 경우
-/*
+
 		let data = xhr.responseText;  // 서버가 넘겨준 파일을 받는다, XML 형식 이외의 문서인 경우 responseText 사용
 		console.log(data);  // 위 파일을 콘솔에 출력
-*/
+
 		
 		
 		// CSV 파일인 경우 
 		// 행은 enter로 구분, 열은 콤마(,)로 구분
-/*
+
 		let csvData = xhr.responseText;
 		let rowData = csvData.split(String.fromCharCode(13));  // split => 아스키 코드 13 : enter
 		//alert(rowData.length); 
@@ -68,7 +68,7 @@
 			}
 			str += "<br>";
 		}
-*/
+
 		
 		
 		// XML 파일인 경우
@@ -91,7 +91,7 @@
 */
 		
 		
-		
+/*		
 		// JSON 파일인 경우
 		let data = xhr.responseText;  // JSON이므로 responseText 사용
 		//alert(data);
@@ -102,17 +102,18 @@
 		for(let i = 0; i < parseData.sangpum.length; i++) {
 			str += parseData.sangpum[i].code + " " + parseData.sangpum[i].sang + "<br>" // parseData.sangpum[i].code 는 key 값
 		}
-		
+*/		
 //		document.querySelector("#disp").innerHTML = data; // text 파일인 경우
-//		document.querySelector("#disp").innerHTML = str;  // CSV 파일인 경우
+		document.querySelector("#disp").innerHTML = str;  // CSV 파일인 경우
 //		document.querySelector("#disp").innerHTML = str;  // XML 파일인 경우
-		document.querySelector("#disp").innerHTML = str;  // JSON 파일인 경우
+//		document.querySelector("#disp").innerHTML = str;  // JSON 파일인 경우
+
 	}
 </script>
 </head>
 <body>
 	<h2>AJAX test</h2>
-	<button id="btnOk">AJAX 원리를 찾아서</button><hr>
+	<button id="btnOk">TXT 읽기</button><hr>
 	<button id="btnOk2">CSV 읽기</button><br>
 	<button id="btnOk3">XML 읽기</button><br>
 	<button id="btnOk4">JSON 읽기</button><hr>

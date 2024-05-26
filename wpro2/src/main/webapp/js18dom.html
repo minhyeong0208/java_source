@@ -7,8 +7,8 @@
 	function abc() {
 		let my = document.getElementById("my");
 		console.log(my.nodeName + ", " +   // nodeName : 요소 이름 H2
-				my.childNodes[0].nodeValue + ", " +  // my.childNodes[0].nodeValue : h2의 child는 "dom 객체의 참조"라는 값.
-				my.firstChild.nodeValue); // my의 첫 번쨰 자식의 값을 의미 => DOM 객체 참조
+				my.childNodes[0] + ", " +  // my.childNodes[0].nodeValue : h2의 child는 "dom 객체의 참조"라는 값.
+				my.lastChild.nodeValue); // my의 첫 번쨰 자식의 값을 의미 => DOM 객체 참조
 		console.log(my.getAttribute("id"));  // my
 		console.log(my.getAttribute("comments"));   // 이건 속성
 	}

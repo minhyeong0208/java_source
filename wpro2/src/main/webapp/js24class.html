@@ -45,6 +45,7 @@
 			constructor(name, age) {
 				this.name = name;
 				this.age = age;
+				
 			}
 			
 			printData() {
@@ -70,7 +71,7 @@
 			}
 		}
 		
-		let test1 = new Class2('김밥', 22);
+		let test1 = new Class2('test', 22);
 		document.write("<br>", test1.printData());  // printData() 메소드의 반환값을 출력 : undefined
 		test1.printData();
 		document.write("<br>", test1.subject);      // 멤버 필드 출력
@@ -86,7 +87,13 @@
 		test1.setName = "공기밥";  // getter, setter는 괄호 없이 이름을 치환한다. 자바와 다름.
 		document.write("<br>", test1.getNameAndAge);
 		
-
+		console.log("subject : ", test1.subject);      // 멤버 필드 출력
+		console.log("name : ", test1.name);
+		console.log("age : ", test1.age);
+		
+		console.log(test1.name);  
+		
+		console.log(test1.getSubject); 
 		
 		document.write("<hr>");
 		class Class3 {
