@@ -8,21 +8,21 @@
 		// 1. new 연산자 사용
 		let obj1 = new Object();  // 객체 생성자를 사용, obj1은 참조형
 		//let obj1 = {};  // {} 과 new Object()는 동일, Object의 기본 멤버(prototype)를 갖는다.
-		obj1.irum = '신기해';
-		obj1.nai = 23;
-		obj1.juso = '강남구 역삼동';
-		obj1.getJuso = function(){ return obj1.juso; };  // getter method
+		obj1.name = '홍길동';
+		obj1.age = 23;
+		obj1.addr = '서울시 강남구';
+		obj1.getAddr = function(){ return obj1.addr; };  // getter method
 		
 		console.log(typeof obj1);  // Object 타입
 		console.log(obj1);         // JSON format => {irum: '신기해', nai: 23, juso: '강남구 역삼동', getJuso: ƒ} => key, value 형식
 		console.log(obj1.toString());
 		
-		let str1 = `${obj1.irum} 님의 나이는 ${obj1.nai}이고 주소는 ${obj1.getJuso()}`;  // getJuso의 경우 실행해야 하므로 ()가 있어야 함.
+		let str1 = `${obj1.name} 님의 나이는 ${obj1.age}이고 주소는 ${obj1.getAddr}`;  // getJuso의 경우 실행해야 하므로 ()가 있어야 함.
 		document.querySelector("#disp1").innerHTML = str1;
 		
 		let obj2 = obj1; // 주소 복사
-		obj2.irum = '홍길동';  // obj1의 이름도 홍길동으로 변경 => obj1도 변경됨
-		let str2 = `${obj2.irum} 님의 나이는 ${obj2.nai}이고 주소는 ${obj2.getJuso()}`;  // getJuso의 경우 실행해야 하므로 ()가 있어야 함.
+		obj2.name = '홍길동';  // obj1의 이름도 홍길동으로 변경 => obj1도 변경됨
+		let str2 = `${obj2.name} 님의 나이는 ${obj2.age}이고 주소는 ${obj2.getAddr()}`;  // getJuso의 경우 실행해야 하므로 ()가 있어야 함.
 		document.querySelector("#disp2").innerHTML = str2;  // 주소를 복사했으므로 str1과 동일한 결과 출력 : 얕은 복사
 		
 		
@@ -30,9 +30,9 @@
 		
 		// 2. literal(data) 사용
 		let myObj = {  // key:value 형태(JSON 형태)의 property로 구성
-			irum:"홍길동",
+				name:"홍길동",
 			nai:33,
-			showNai:function(msg) {
+			showAge:function(msg) {
 				//this : 메소드 내부에서 객체 멤버에 접근
 				return this.nai + msg;  // this.nai : 메소드 내부에서 객체 멤버에 접근을 가능하게 함.
 			}
@@ -47,10 +47,11 @@
 		console.log(myObj);         // JSON format => {irum: '홍길동', nai: 33, showNai: ƒ}
 		console.log(myObj.toString());
 		
-		let str3 = `${myObj.irum} 님의 나이는 ${myObj.nai}이고 나이는 ${myObj.showNai('살')}`; 
+		let str3 = `${myObj.name} 님의 나이는 ${myObj.nai}이고 나이는 ${myObj.showAge('살')}`; 
 		document.querySelector("#disp3").innerHTML = str3;  
 		
-		
+		let str = `이름 ${myObj.name}, 나이 ${myObj.showAge('살')}`; 
+		console.log(str);
 		
 		
 		// 함수를 별도 작성 후 객체에 할당도 가능하다.
@@ -134,13 +135,15 @@
 		console.log('~~~ 프로퍼티 단축 구문 사용 ~~~');
 		function MakeUser(name, age){
 			return {
-				//name:name, => property 단축 구문
+				//name:name, // property 단축 구문
 				name,
 				age,
 			}
 		}
-		let user1 = MakeUser('길동', 22);
+		let user1 = MakeUser('홍길동', 22);
 		document.querySelector("#disp8").innerText = user1.name + " " + user1['age']; 
+		console.log(user1);
+		
 		user1 = null;  // 도달 불가능한 객체이므로 가비지 컬렉터에 의해 메모리 해제
 		//document.querySelector("#disp8").innerText = user1.name + " " + user1['age']; 메모리가 해제되어 이곳에 접근이 불가
 		
@@ -155,6 +158,7 @@
 		arr1.push('c');
 		arr1.push('b');
 		document.querySelector("#disp9").innerText = arr1;  // arr1.sort() 오름차순 정렬, arr1.reverse() => 내림차순 정렬
+		console.log(arr1);
 	}
 </script>
 </head>
