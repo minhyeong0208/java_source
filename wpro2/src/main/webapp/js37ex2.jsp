@@ -22,7 +22,7 @@
 	try {
 		Class.forName("org.mariadb.jdbc.Driver"); 
 		
-		String url = "jdbc:mariadb://localhost:3306/mydb";
+		String url = "jdbc:mariadb://localhost:3306/test";
 		conn = DriverManager.getConnection(url, "root", "123");
 		
 		String sql = "";

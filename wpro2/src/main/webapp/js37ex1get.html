@@ -47,7 +47,7 @@
 		
 		for(let i = 0; i < parseData.jikwon.length; i++) {
 			str += "<tr>";
-			str += "<td>" + parseData.jikwon[i].no + "</td>";  // 이 code는 키값과 동일, value 값이 아니.ㅁ
+			str += "<td>" + parseData.jikwon[i].no + "</td>";  
 			str += "<td>" + parseData.jikwon[i].name + "</td>";
 			str += "<td>" + parseData.jikwon[i].jik + "</td>";
 			str += "<td>" + parseData.jikwon[i].ibsail + "</td>";
@@ -62,7 +62,7 @@
 <body>
  	<h4>직원 정보</h4>
  	<form name="frm">
-  		<input type="radio" id="all" name="option" value="전체">
+  		<input type="radio" id="all" name="option" value="전체" checked>
  		<label for="all">전체</label>
  		<input type="radio" id="men" name="option" value="남">
   		<label for="men">남자</label>
