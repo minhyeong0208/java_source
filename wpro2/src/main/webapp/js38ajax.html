@@ -101,7 +101,7 @@
 		// 엑시오스 : Promise 기반의 HTTP 통신 라이브러리이며 상대적으로 다른 HTTP 통신 라이브러리들에 비해 문서화가 잘되어 있고 API가 다양하다.
 		const url = "js38.json";
 		axios.get(url).then((response) => {
-			//alert(response.status);
+			console.log(response.data);
 			return response.data;  // return 값은 then이 받는다.
 		}).then((data) => {
 			let str = "";
@@ -194,7 +194,7 @@
 	<input type="text" id="bookSearch" value="자바"><br>
 	<button id="btnApi1">도서 검색(fetch)</button>
 	<button id="btnApi2">도서 검색(axios)</button>
-	
+	<!--  
 	<hr>
 	방법 1 : 기본 방법<br>
 	<div id="show1"></div>
@@ -204,7 +204,7 @@
 	<div id="show3"></div>
 	방법 4 : axios 방법<br>
 	<div id="show4"></div>
-	<hr>
+	<hr>-->
 	<div id="showBook1"></div><br>
 	<div id="showBook2"></div>
 </body>
