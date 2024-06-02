@@ -9,6 +9,14 @@
 			frm.submit();
 		}
 	}
+	
+	function func() {
+		if(frm.num.value === "" || frm.name.value === "" || frm.kor.value === "" || frm.eng.value ==="") {
+			alert("자료 입력!");
+			return;
+		}
+		frm.submit();
+	}
 </script>
 </head>
 <body>

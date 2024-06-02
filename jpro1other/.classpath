@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/work/mybank.jar"/>
+	<classpathentry kind="lib" path="C:/work/Ex6Bank.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

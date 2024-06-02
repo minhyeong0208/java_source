@@ -27,6 +27,15 @@ public class Result extends HttpServlet {
 		ArrayList<Students> slist = (ArrayList<Students>)session.getAttribute("list"); 
 		
 		if(slist == null) slist = new ArrayList<Students>(); 
+		
+		for(Students student : slist) {
+			if (student.getNum() == num) {
+                response.sendRedirect("exam.html");             
+                return;  // 처리 종료
+           }
+		}
+		
+		
 		slist.add(new Students(num, name, kor, eng)); 
 		session.setAttribute("list", slist);
 		
@@ -37,17 +46,11 @@ public class Result extends HttpServlet {
 		out.println("학생들 성적표<br><br><table>");
 		out.println("<tr><th>번호</th><th>이름</th><th>국어</th><th>영어</th><th>총점</th></tr>");
 		
-		ArrayList<Integer> set = new ArrayList<Integer>();
+
 		int count = 0;
 		for(int i = 0; i < slist.size() ; i++) {
 			Students students = (Students)slist.get(i);  // 컬렉션의 내용을 꺼냄
-			
-			set.add(students.getNum());
-			System.out.println(set);
-//			if(set.contains(num)) {
-//				out.println("<script>location.href = 'exam.html'</script>");
-//				
-//			}
+
 			out.println("<tr><td>"+ students.getNum() +"</td>");
 			out.println("<td>"+ students.getName() +"</td>");
 			out.println("<td>"+ students.getKor() +"</td>");
@@ -56,15 +59,11 @@ public class Result extends HttpServlet {
 			count++;
 		}
 		
-		
 		out.print("<tr><td colspan='5'>인원수 : " + count + "</td></tr>");
 		out.println("</table></body></html>");
 		out.println("<br><a href='exam.html'>새로입력</a>&nbsp;");
 		out.println("<a href='Delete'>세션삭제</a>");
-//		if(set.contains(num)) {
-//			response.sendRedirect("exam.html");
-//			return false;
-//		}
+
 	}
 
 }

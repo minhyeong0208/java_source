@@ -55,8 +55,8 @@ public class ServletEx06Cookie extends HttpServlet {
 		// id, pwd가 없는 경우 -> 로그인을 하도록 함.		
 		out.println("<h2>로그인</h2>");
 		out.println("<form method='post'>");  // 로그인 방식이 post로 넘어가 doPost() 메소드가 실행.
-		out.println("id : <input type='text' name='id'><br>");
-		out.println("pwd : <input type='text' name='pwd'><br>");
+		out.println("id : <input type='text' name='id2'><br>");
+		out.println("pwd : <input type='text' name='pwd2'><br>");
 		out.println("<input type='submit' value='로그인'><br>");
 		out.println("</body></html>");
 		out.close();
@@ -68,8 +68,8 @@ public class ServletEx06Cookie extends HttpServlet {
 		PrintWriter out = response.getWriter();  
 		out.println("<html><body>");
 		
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
+		String id = request.getParameter("id2");
+		String pwd = request.getParameter("pwd2");
 		//System.out.println(id + " " + pwd);
 		
 		// id는 aaa pwd는 111인 경우에 대해
@@ -81,7 +81,7 @@ public class ServletEx06Cookie extends HttpServlet {
 				idCookie.setMaxAge(60 * 60 * 24 * 365); // 쿠키의 유효기간 - 클라이언트 컴퓨터에 최대 1년간 보관된다.
 			
 				pwd = URLEncoder.encode(pwd, "utf-8"); // 비밀번호 암호화
-				Cookie pwdCookie = new Cookie("pwd", id);
+				Cookie pwdCookie = new Cookie("pwd", pwd);
 				pwdCookie.setMaxAge(60 * 60 * 24 * 365);
 				
 				response.addCookie(idCookie);
