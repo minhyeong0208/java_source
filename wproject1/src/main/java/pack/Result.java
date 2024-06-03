@@ -28,10 +28,11 @@ public class Result extends HttpServlet {
 		
 		if(slist == null) slist = new ArrayList<Students>(); 
 		
+		// 번호 중복 체크
 		for(Students student : slist) {
 			if (student.getNum() == num) {
                 response.sendRedirect("exam.html");             
-                return;  // 처리 종료
+                //return; 
            }
 		}
 		
