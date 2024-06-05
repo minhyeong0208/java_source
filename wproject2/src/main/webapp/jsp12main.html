@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>빈즈 호출 시 값 전달</title>
+</head>
+<body>
+<h2>빈즈 호출 시 값 전달</h2>
+<a href="jsp12para.jsp?msg=good">값을 들고 JSP 호출</a> 
+<!-- 
+쿼리스트링의 key값을 msg로 설정한 경우, good 출력
+key값이 msg가 아닌 경우, null 반환
+-> 클라이언트에서 파라미터 변수명은 Para1Class 클래스의 멤버 필드명과 동일하게 해야한다. getter, setter도 형식에 맞게 작성
+-> 쿼리스트링의 키값(파라미터명)이 getProperty, setProperty의 property 속성과 같아야 함.
+-->
+</body>
+</html>
