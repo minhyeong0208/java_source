@@ -21,7 +21,7 @@ include 지시어 : 여러 jsp 파일에서 공통으로 사용할 부분을 별
 <br>
 <div style="color:red; font-size:30px;">
 <jsp:include page="jsp3tag2.jsp">
-	<jsp:param value="good" name="msg"/>       
+	<jsp:param value="good1" name="msg"/>       
 </jsp:include>
 </div>
 

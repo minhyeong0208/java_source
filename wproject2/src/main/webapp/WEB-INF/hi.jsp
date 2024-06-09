@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-안녕. 난 아무나 못 불러. 성격 있어!
+forward 방식으로 호출 가능!
 </body>
 </html>

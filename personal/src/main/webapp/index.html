@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+        function refreshChart() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'livechart.jsp', true);
+            xhr.responseType = 'blob';
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var img = document.getElementById('chart');
+                    img.src = URL.createObjectURL(xhr.response);
+                }
+            };
+            xhr.send();
+        }
+
+        setInterval(refreshChart, 5000); // 5초마다 차트 새로고침
+        window.onload = refreshChart; // 페이지 로드 시 첫 차트 로드
+    </script>
+</head>
+<body>
+<h1>XChart Bar Chart</h1>
+    <img id="chart" src="chart.jsp" alt="XChart Image">
+</body>
+</html>

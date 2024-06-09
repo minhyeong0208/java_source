@@ -25,7 +25,7 @@ for(int a = 0; a < 9; a++){
 	out.println(dan + " * " + (a + 1) + " = " + re[a] + "&nbsp;&nbsp;");
 }
 %>
-<hr>
+
 ** JSP 액션 태그 중 useBean을 사용 ** <br>
 <jsp:useBean id="gugu" class="pack.Gugudan" scope="page" /> <%-- Gugudan gugu = new Gugudan();와 비슷한 의미, id값이 객체 변수이다.--%>
 <%-- 
@@ -39,7 +39,7 @@ Application : 웹 어플리케이션이 시작되고 종료될 때까지 변수
 int re2[] = gugu.computeGugu(dan);
 
 for(int a = 0; a < 9; a++){
-	out.println(dan + " * " + (a + 1) + " = " + re2[a] + "&nbsp;&nbsp;");
+	out.println(dan + " * " + (a + 1) + " = " + re2[a] + "<br>");
 }
 %>
 </body>

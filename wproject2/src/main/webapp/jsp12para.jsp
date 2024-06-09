@@ -14,12 +14,7 @@ String mbc = request.getParameter("msg");
 </head>
 <body>
 <b>Beans 연습 : 빈즈에 값 전달</b>
-<%
-// 우리가 현재까지 알고 있는 기술 사용
-my.setMsg(mbc);
-out.println("<br>메세지 출력 : " + my.getMsg());
-%>
-<br>
+
 <!-- String msg = request.getParameter("msg"); 내부적으로 자동 처리 -->
 
 <!-- JSP에서는 아래의 방법을 권장! -->

@@ -1,6 +1,6 @@
-<%@page import="java.util.Base64"%>
 <%@page import="io.jsonwebtoken.Jwts"%>
 <%@page import="io.jsonwebtoken.security.Keys"%>
+<%@page import="java.util.Base64"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.security.Key"%>
 <%@page import="javax.servlet.*"%>
@@ -20,10 +20,10 @@ if(id != null && password != null && id.equalsIgnoreCase(validId) && password.eq
 	// 이후, 성공 페이지로 이동한다.
 	
 	// 고정된 비밀 키 사용 (예제용)  최소 256비트 길이의 비밀 키
-//	String secretKeyString = "mySuperSecretKey12345678901234567890123456789012";
+	String secretKeyString = "mySuperSecretKey12345678901234567890123456789012";
 	// hmacShaKeyFor() : key byte array를 기반으로 적절한 HMAC 알고리즘을 적용한 Key(java.security.Key) 객체를 생성 -> 암호화를 위해 작성함.
-//	Key secretKey = Keys.hmacShaKeyFor(secretKeyString.getBytes());
-	
+	//Key secretKey = Keys.hmacShaKeyFor(secretKeyString.getBytes());
+	//System.out.println(secretKey);
 	// 위의 작업을 주석 처리하고 아래 내용으로 변경하자.
     // 서블릿 컨텍스트에서 Base64로 인코딩된 비밀 키 가져오기  java.util.Base64
     String encodedKey = (String) getServletContext().getAttribute("secretKey");

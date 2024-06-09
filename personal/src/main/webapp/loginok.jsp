@@ -32,5 +32,4 @@
 		}
 	%>
 </table>
-</body>
 </html>
