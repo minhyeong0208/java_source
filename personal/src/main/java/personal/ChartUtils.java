@@ -5,6 +5,7 @@ import org.knowm.xchart.CategoryChartBuilder;
 import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.BitmapEncoder.BitmapFormat;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,6 +25,9 @@ public class ChartUtils {
                 .yAxisTitle("Value")
                 .build();
 
+        //chart.getStyler().setChartBackgroundColor(new Color(255,255,255,0));
+        chart.getStyler().setPlotBackgroundColor(new Color(255,255,255,0));
+        
         // Series 추가
         chart.addSeries("Series1", xData, yData);
 
