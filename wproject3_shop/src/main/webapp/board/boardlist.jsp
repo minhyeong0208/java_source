@@ -1,3 +1,4 @@
+<%-- 20240611 --%>
 <%@page import="pack.board.BoardDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -70,11 +71,19 @@ window.onload = () => {
 				
 				for(int i = 0; i < list.size(); i++) {
 					dto = (BoardDto)list.get(i);	// casting 선택
+					
+					// 20240612 댓글 들여쓰기 준비 -----
+					int nst = dto.getNested();
+					String tab = "";
+					for(int k = 0; k < nst; k++) {
+						tab += "&nbsp;&nbsp;";
+					}
+					// ----------------------------
 				%>
 					<tr>
 						<td style="border-bottom: 1px solid black"><%=dto.getNum() %></td>
 						<td style="border-bottom: 1px solid black">
-							<a href="boardcontent.jsp?num=<%=dto.getNum() %>&page=<%=spage %>"><%=dto.getTitle() %></a>
+							<%=tab %><a href="boardcontent.jsp?num=<%=dto.getNum() %>&page=<%=spage %>"><%=dto.getTitle() %></a>
 						</td>
 						<td style="border-bottom: 1px solid black"><%=dto.getName() %></td>
 						<td style="border-bottom: 1px solid black"><%=dto.getBdate() %></td>
