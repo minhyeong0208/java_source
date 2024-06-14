@@ -74,8 +74,8 @@ function funcAdminLogin(){
 	}
 	adminLoginform.submit();
 }
-function funcAdminHome(){
-	location.href = "../index.jsp";
+function funcAdminHome(){  // 메인 페이지로 돌아가는 메소드
+	location.href = "../guest/guest_index.jsp";
 }
 
 //관리자 입장에서 각 회원 수정

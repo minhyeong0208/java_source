@@ -16,7 +16,7 @@ String mem = "";
 if(memid == null) 
 	mem = "<a href='../member/register.jsp'>회원가입</a>";
 else
-	mem = "<a href='../member/memberUpdate.jsp'>회원수정</a>";
+	mem = "<a href='../member/memberupdate.jsp'>회원수정</a>";
 %>
 <table>
 	<tr style="background-color: #ffbbcc; text-align:center;">

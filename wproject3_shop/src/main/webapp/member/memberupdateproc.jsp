@@ -9,7 +9,7 @@
 
 <%
 String id = (String)session.getAttribute("idKey");
-boolean b = memberMgr.memberUpdate(memberBean, id); 
+boolean b = memberMgr.memberUpdate(memberBean, id);
 
 if(b){
 %>

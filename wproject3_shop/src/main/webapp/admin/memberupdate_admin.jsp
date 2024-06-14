@@ -6,7 +6,7 @@
 
 <%
 request.setCharacterEncoding("utf-8");
-String id = request.getParameter("id");
+String id = request.getParameter("id"); // 회원 목록에 있는 아이디 값이 전달된다.
 //out.print(id);
 
 MemberBean bean = memberMgr.getMember(id);
