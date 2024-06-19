@@ -10,8 +10,11 @@ import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import pack.order.OrderBean;
 
 public class ProductMgr {
 	private Connection conn;
@@ -211,5 +214,27 @@ public class ProductMgr {
 		}
 		
 		return b;
+	}
+	
+	// 고객이 상품 주문 시, 주문 수량만큼 재고 차감
+	public void reduceProduct(OrderBean bean) {
+		try {
+			String sql = "update shop_product set stock=(stock - ?) where no =?";
+			
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getQuantity());
+			pstmt.setString(2, bean.getProduct_no());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("reduceProduct() err : " + e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) { }
+		}
 	}
 }
