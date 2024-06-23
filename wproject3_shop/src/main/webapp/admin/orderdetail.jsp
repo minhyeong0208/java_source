@@ -48,7 +48,7 @@ ProductDto product = productMgr.getProduct(order.getProduct_no());
 					<option value="5">처리완료</option>
 				</select>
 				<script type="text/javascript">
-					document.detatilFrm.state.value = <%=order.getState() %> <%-- 값 유지하는 방법 --%>
+					document.detailFrm.state.value = <%=order.getState() %> <%-- 값 유지하는 방법 --%>
 				</script>
 			</td>
 		</tr>
