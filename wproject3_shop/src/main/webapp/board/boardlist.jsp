@@ -50,7 +50,6 @@ window.onload = () => {
 				try {
 					spage = Integer.parseInt(request.getParameter("page"));
 					
-					
 				} catch(Exception e) {
 					spage = 1;                 // spage 값을 주지 않는 경우, 기본값은 1로 설정
 				}

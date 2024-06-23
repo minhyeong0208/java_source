@@ -11,7 +11,7 @@ boolean result = false;
 if(flag.equals("insert")) {
 	result = productMgr.insertProduct(request);  // request를 통해 클라이언트가 전달한 데이터를 읽을 수 있다.
 } else if(flag.equals("update")) {
-	result = productMgr.updateProduct(request);  // request를 통해 클라이언트가 전달한 데이터를 읽을 수 있다. 
+	result = productMgr.updateProduct(request);   // request를 통해 클라이언트가 전달한 데이터를 읽을 수 있다. 
 } else if(flag.equals("delete")) {
 	result = productMgr.deleteProduct(request.getParameter("no")); 
 } else {
