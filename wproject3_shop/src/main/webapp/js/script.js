@@ -49,7 +49,7 @@ function funcNewMember() {
 
 // ----------- 쇼핑몰 관련 ---------------
 //쇼핑몰 로그인 후 자신의 정보 수정 시 사용
-function memberUpdateOk(){ 
+function memberUpdateOk(){
 	//입력자료 오류검사 생략
 	document.updateForm.submit();
 }

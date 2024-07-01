@@ -12,7 +12,7 @@
 <body>
 <h2>EL 연산자 / 내장객체 경험</h2>
 <b> 연산자 </b> <br>
-\${3 + 4} ==> ${3 + 4}<br>
+\${3 + 4} ==> ${3 + 4}<br>$
 \${5 / 4} ==> ${5 / 4} <%-- ${5 div 4} --%><br> 
 \${5 % 4} ==> ${5 % 4}, ${ 5 mod 4 }<br>
 
@@ -58,7 +58,7 @@ EL로 출력 : ${list[0]}, ${list[1]}, ${list[2]}
 <%-- EL에서는 반복문 사용 불가, JSTL을 사용해야 함. --%>
 <br><br>
 <b>HTML 문서 자료 받기</b><p/>
-<a href="el_2.html">el_2 HTML 호출</a><br>
+<a href="el_2.html">test HTML 호출</a><br>
 이름 : ${ param.irum }, ${ param["irum"] }<br>
 성격 : ${ paramValues.sung[0] }, ${ paramValues.sung["1"] } <%-- 배열 인덱스는 문자로 작성이 가능 --%>
 </body>
