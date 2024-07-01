@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import pack.model.HobbyModel;
 
 //@WebServlet("/hobby.do")
-//@WebServlet({"/hobby.do", "/hobby2.do"})
+@WebServlet({"/hobby.do", "/hobby2.do"})
 public class HobbyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HobbyModel model;

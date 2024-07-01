@@ -12,7 +12,7 @@ public class DatePro implements CommandInter {
 	
 	@Override
 	public String showData(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		DateModel dateModel = new DateModel();
+		DateModel dateModel = DateModel.getInstance();
 		ArrayList<String> list = dateModel.getDate();
 		request.setAttribute("datas", list);
 		
