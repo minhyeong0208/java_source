@@ -41,6 +41,7 @@ public class UserDaoModel {
 		
 		try {
 			list = session.selectList("selectDataAll");
+			System.out.println(list);
 		} catch (Exception e) {
 			System.out.println("getUserDataAll err : " + e);
 		} finally {
@@ -69,4 +70,41 @@ public class UserDaoModel {
 		return result;  // 0 or 1
 	}
 	
+	// update 데이터 수정
+	public int updateData(UserForm userForm) {
+		int result = 0;
+			
+		SqlSession session = factory.openSession();
+			
+		try {
+			result = session.update("updateData", userForm);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("updateData err : " + e);
+			session.rollback();
+		} finally {
+			session.close();
+		}
+			
+		return result;  // 0 or 1
+	}
+	
+	// delete 데이터 삭제
+	public int deleteData(String userid) {
+		int result = 0;
+			
+		SqlSession session = factory.openSession();
+			
+		try {
+			result = session.delete("deleteData", userid);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("deleteData err : " + e);
+			session.rollback();
+		} finally {
+			session.close();
+		}
+			
+		return result;  // 0 or 1
+	}
 }

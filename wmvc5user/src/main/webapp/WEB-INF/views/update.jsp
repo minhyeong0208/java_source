@@ -9,7 +9,7 @@
 <body>
 <h3>사용자 수정</h3>
 <form action="update.m2" method="post">
-<input type="hidden" value="userid" value="${user.userid}">
+<input type="hidden" name="userid" value="${user.userid}">
 아 이 디 : ${user.userid}<br>
 비밀번호 : <input type="text" name="password" value="${user.password}"><br>
 작 성 자 : <input type="text" name="name" value="${user.name}"><br>

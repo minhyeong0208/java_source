@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = () => {
+	document.querySelector("#btnList").addEventListener("click", listFunc, false);
+}
+
+function listFunc() {
+	//alert("a");
+	
+	frm.action="list.page";
+	frm.submit();
+}
+</script>
+</head>
+<body>
+<form name="frm" method="post">
+	<input type="button" value="고객 목록" id="btnList">
+</form>
+</body>
+</html>
