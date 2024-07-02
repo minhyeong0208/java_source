@@ -41,6 +41,14 @@ public class UserManager {
 	}
 	
 	// 데이터 수정
+	public int update(UserForm userForm) {
+		return getUserDaoModel().updateData(userForm);
+	}
+	
+	// 데이터 삭제
+	public int delete(String userid) {
+		return getUserDaoModel().deleteData(userid);
+	}
 	
 	// 하나의 데이터 받기
 	public UserDto findUser(String userid) {

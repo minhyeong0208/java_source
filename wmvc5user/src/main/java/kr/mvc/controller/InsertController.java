@@ -20,7 +20,7 @@ public class InsertController implements Controller {
 		
 		// 모델과 통신 <- Controller에서 Model로 이동
 		int result = UserManager.instance().insert(userForm);
-		
+
 		ModelAndView modelAndView = new ModelAndView();
 		
 		if(result > 0) {

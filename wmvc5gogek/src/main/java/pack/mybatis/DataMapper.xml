@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev">
+	<select id="selectBuserAll" resultType="pack.model.BuserDto">
+		select buser_no, buser_name from buser
+	</select>
+	
+	<select id="selectPartGogek" resultType="pack.model.GogekDto">
+		select * from gogek where gogek_damsano in (select jikwon_no from jikwon where buser_num=#{buser_no})
+	</select>
+</mapper>
