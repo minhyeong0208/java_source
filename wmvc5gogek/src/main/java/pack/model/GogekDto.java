@@ -1,7 +1,7 @@
 package pack.model;
 
 public class GogekDto {
-	private String gogek_no, gogek_name, gogek_tel, gogek_jumin, gogek_damsano;
+	private String gogek_no, gogek_name, gogek_tel, gogek_jumin, gogek_damsano, jikwon_name;
 
 	public String getGogek_no() {
 		return gogek_no;
@@ -41,6 +41,14 @@ public class GogekDto {
 
 	public void setGogek_damsano(String gogek_damsano) {
 		this.gogek_damsano = gogek_damsano;
+	}
+
+	public String getJikwon_name() {
+		return jikwon_name;
+	}
+
+	public void setJikwon_name(String jikwon_name) {
+		this.jikwon_name = jikwon_name;
 	}
 	
 	

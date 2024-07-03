@@ -9,6 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectPartGogek" resultType="pack.model.GogekDto">
-		select * from gogek where gogek_damsano in (select jikwon_no from jikwon where buser_num=#{buser_no})
+		select gogek_no,gogek_name,gogek_tel,jikwon_name from gogek inner join jikwon 
+		where gogek.gogek_damsano=jikwon_no and gogek_damsano in (select jikwon_no from jikwon where buser_num=#{buser_no})
+		order by jikwon_name
 	</select>
 </mapper>

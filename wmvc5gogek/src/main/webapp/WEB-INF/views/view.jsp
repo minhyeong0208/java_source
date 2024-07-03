@@ -9,11 +9,15 @@
 </head>
 <body>
 <h3>부서별 관리고객</h3>
+<%--
 <table border="1">
-	<tr>
-		<th>고객번호</th><th>고객명</th><th>고객전화</th>
-	</tr>
-	<c:forEach var="gogek" items="${glist}"> <%-- ListController 16행 참조 --%>
+	<c:forEach var="gogek" items="${list}">
+		<tr>
+			<td colspan="3">${gogek.jikwon_name}의 고객</td>
+		</tr>
+		<tr>			
+			<th>고객번호</th><th>고객명</th><th>고객전화</th>
+		</tr>
 		<tr>
 			<td>${gogek.gogek_no}</td>
 			<td>${gogek.gogek_name}</td>
@@ -21,5 +25,9 @@
 		</tr>
 	</c:forEach>
 </table>
+--%>
+<c:forEach var="list" items="${list}">
+	${list.buser_name}
+</c:forEach>
 </body>
 </html>
