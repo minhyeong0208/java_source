@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dir2/test.html</title>
+</head>
+<body>
+    <h3>CORS</h3>
+    <input id="season" type="text" placeholder="winter/summer 등 입력">
+    <button onclick="getSeason()">API 요청</button>
+    <script>
+        // 아래와 같이 쓴 이유는, 다른 곳에서도 호출할 수 있도록 하기 위해
+        function getSeason() {
+            const season = document.querySelector("#season").value;
+            // http://localhost:3000/user/winter 가 실제 전송되는 값
+            fetch(`http://localhost:3000/user/${season}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+        }
+    </script>
+</body>
+</html>

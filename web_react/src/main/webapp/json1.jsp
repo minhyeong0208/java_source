@@ -7,6 +7,10 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+// 동일 출처 정책(Same-Origin Policy), CORS 문제 해결
+response.setHeader("Access-Control-Allow-Origin", "*");
+%>
 
 <%
 String DRIVER = "org.mariadb.jdbc.Driver";
@@ -18,7 +22,7 @@ String DBPW = "123";
 Class.forName(DRIVER);
 Connection con = DriverManager.getConnection(DBURL, DBID, DBPW);
 
-String sql = "select jikwon_no, jikwon_name, buser_name, jikwon_jik from jikwon inner join buser on jikwon.buser_num=buser.buser_no";
+String sql = "select jikwon_no, jikwon_name, buser_name, jikwon_jik,jikwon_pay from jikwon inner join buser on jikwon.buser_num=buser.buser_no";
 PreparedStatement pstmt = con.prepareStatement(sql);
 
 ResultSet rs = pstmt.executeQuery();
@@ -34,12 +38,13 @@ while (rs.next()) {
 	obj.put("name", rs.getString("jikwon_name"));
 	obj.put("buser", rs.getString("buser_name"));
 	obj.put("jik", rs.getString("jikwon_jik"));
-
+	obj.put("pay", rs.getString("jikwon_pay"));
+	
 	//5-3.배열한칸에 객체 하나를 저장
 	arr.add(obj);
 }
 %>
 
 { 
-"list":<%=arr%>
+"jikwon":<%=arr%>
 }
